@@ -67,7 +67,7 @@ export default {
         testChunks: true,
         checkChunkUploadedByResponse: function(chunk, message) {
           let objMessage = JSON.parse(message);
-          let chunkNumbers = objMessage.data.chunkNumbers;
+          let chunkNumbers = objMessage.chunkNumbers;
           console.log(objMessage)
           return (chunkNumbers || []).indexOf(chunk.offset + 1) >= 0;
         },

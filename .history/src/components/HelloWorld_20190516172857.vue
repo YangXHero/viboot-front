@@ -62,13 +62,12 @@ export default {
         }
       },
       uploadOptions2: {
-        target: "//localhost:8765/yzyjy/chunk",
+        target: "chunk",
         chunkSize: 1 * 1024 * 1024,
         testChunks: true,
         checkChunkUploadedByResponse: function(chunk, message) {
           let objMessage = JSON.parse(message);
-          let chunkNumbers = objMessage.data.chunkNumbers;
-          console.log(objMessage)
+          let chunkNumbers = objMessage.chunkNumbers;
           return (chunkNumbers || []).indexOf(chunk.offset + 1) >= 0;
         },
         headers: {},

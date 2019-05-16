@@ -2,7 +2,7 @@ import request from '../util/request'
 
 export function merge(form) {
   return request({
-    url: '/merge',
+    url: '/upload/merge',
     method: 'post',
     data: form
   })
