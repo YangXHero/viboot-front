@@ -52,7 +52,7 @@ export default {
     return {
       files: [],
       uploadOptions1: {
-        target: "chunk",
+        target: "/chunk",
         testChunks: false, //是否开启服务器分片校验
         fileParameterName: "file",
         headers: {},
@@ -62,7 +62,7 @@ export default {
         }
       },
       uploadOptions2: {
-        target: "chunk",
+        target: "/chunk",
         chunkSize: 1 * 1024 * 1024,
         testChunks: true,
         checkChunkUploadedByResponse: function(chunk, message) {

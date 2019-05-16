@@ -52,7 +52,7 @@ export default {
     return {
       files: [],
       uploadOptions1: {
-        target: "chunk",
+        target: "//localhost:18080/api/upload/single",
         testChunks: false, //是否开启服务器分片校验
         fileParameterName: "file",
         headers: {},
@@ -62,7 +62,7 @@ export default {
         }
       },
       uploadOptions2: {
-        target: "chunk",
+        target: "//localhost:18080/api/upload/chunk",
         chunkSize: 1 * 1024 * 1024,
         testChunks: true,
         checkChunkUploadedByResponse: function(chunk, message) {
@@ -96,7 +96,6 @@ export default {
     onFileProgress2(rootFile, file, chunk) {},
     onFileSuccess2(rootFile, file, response, chunk) {
       let res = JSON.parse(response);
-      console.log(res)
       if (res.code == 1) {
         return;
       }
