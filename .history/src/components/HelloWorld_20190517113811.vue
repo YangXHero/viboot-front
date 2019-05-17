@@ -171,7 +171,6 @@ export default {
     onFileError1(rootFile, file, response, chunk) {},
     onFileAdded2(file) {
       console.log(file);
-      this.panelShow = true;
       this.computeMD5(file);
     },
     onFileProgress2(rootFile, file, chunk) {},

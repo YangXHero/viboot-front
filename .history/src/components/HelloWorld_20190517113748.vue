@@ -29,29 +29,27 @@
           <uploader-btn :attrs="attrs" directory>选择文件夹</uploader-btn>
         </uploader-drop>
         <uploader-list v-show="panelShow">
-          <div class="file-panel" slot-scope="props" :class="{'collapse': collapse}">
-            <div class="file-title">
-              <h2>文件列表</h2>
-              <div class="operate">
-                <el-button @click="fileListShow" type="text" :title="collapse ? '展开':'折叠' ">
-                  <i class="iconfont" :class="collapse ? 'inuc-fullscreen': 'inuc-minus-round'"></i>
-                </el-button>
-                <el-button @click="close" type="text" title="关闭">
-                  <i class="iconfont icon-close"></i>
-                </el-button>
-              </div>
-            </div>
+                <div class="file-panel" slot-scope="props" :class="{'collapse': collapse}">
+                    <div class="file-title">
+                        <h2>文件列表</h2>
+                        <div class="operate">
+                            <el-button @click="fileListShow" type="text" :title="collapse ? '展开':'折叠' ">
+                                <i class="iconfont" :class="collapse ? 'inuc-fullscreen': 'inuc-minus-round'"></i>
+                            </el-button>
+                            <el-button @click="close" type="text" title="关闭">
+                                <i class="iconfont icon-close"></i>
+                            </el-button>
+                        </div>
+                    </div>
 
-            <ul class="file-list">
-              <li v-for="file in props.fileList" :key="file.id">
-                <uploader-file :class="'file_' + file.id" ref="files" :file="file" :list="true"></uploader-file>
-              </li>
-              <div class="no-file" v-if="!props.fileList.length">
-                <i class="iconfont icon-empty-file"></i> 暂无待上传文件
-              </div>
-            </ul>
-          </div>
-        </uploader-list>
+                    <ul class="file-list">
+                        <li v-for="file in props.fileList" :key="file.id">
+                            <uploader-file :class="'file_' + file.id" ref="files" :file="file" :list="true"></uploader-file>
+                        </li>
+                        <div class="no-file" v-if="!props.fileList.length"><i class="iconfont icon-empty-file"></i> 暂无待上传文件</div>
+                    </ul>
+                </div>
+            </uploader-list>
       </uploader>
     </div>
     <div class="uploadDiv2">
@@ -69,31 +67,28 @@
         <uploader-unsupport></uploader-unsupport>
         <uploader-drop>
           <uploader-btn :attrs="attrs">分块上传</uploader-btn>
-        </uploader-drop>
-        <uploader-list v-show="panelShow">
-          <div class="file-panel" slot-scope="props" :class="{'collapse': collapse}">
-            <div class="file-title">
-              <h2>文件列表</h2>
-              <div class="operate">
-                <el-button @click="fileListShow" type="text" :title="collapse ? '展开':'折叠' ">
-                  <i class="iconfont" :class="collapse ? 'inuc-fullscreen': 'inuc-minus-round'"></i>
-                </el-button>
-                <el-button @click="close" type="text" title="关闭">
-                  <i class="iconfont icon-close"></i>
-                </el-button>
-              </div>
-            </div>
+        </uploader-drop><uploader-list v-show="panelShow">
+                <div class="file-panel" slot-scope="props" :class="{'collapse': collapse}">
+                    <div class="file-title">
+                        <h2>文件列表</h2>
+                        <div class="operate">
+                            <el-button @click="fileListShow" type="text" :title="collapse ? '展开':'折叠' ">
+                                <i class="iconfont" :class="collapse ? 'inuc-fullscreen': 'inuc-minus-round'"></i>
+                            </el-button>
+                            <el-button @click="close" type="text" title="关闭">
+                                <i class="iconfont icon-close"></i>
+                            </el-button>
+                        </div>
+                    </div>
 
-            <ul class="file-list">
-              <li v-for="file in props.fileList" :key="file.id">
-                <uploader-file :class="'file_' + file.id" ref="files" :file="file" :list="true"></uploader-file>
-              </li>
-              <div class="no-file" v-if="!props.fileList.length">
-                <i class="iconfont icon-empty-file"></i> 暂无待上传文件
-              </div>
-            </ul>
-          </div>
-        </uploader-list>
+                    <ul class="file-list">
+                        <li v-for="file in props.fileList" :key="file.id">
+                            <uploader-file :class="'file_' + file.id" ref="files" :file="file" :list="true"></uploader-file>
+                        </li>
+                        <div class="no-file" v-if="!props.fileList.length"><i class="iconfont icon-empty-file"></i> 暂无待上传文件</div>
+                    </ul>
+                </div>
+            </uploader-list>
       </uploader>
     </div>
   </div>
@@ -171,7 +166,6 @@ export default {
     onFileError1(rootFile, file, response, chunk) {},
     onFileAdded2(file) {
       console.log(file);
-      this.panelShow = true;
       this.computeMD5(file);
     },
     onFileProgress2(rootFile, file, chunk) {},
@@ -234,27 +228,15 @@ export default {
       };
     },
     fileListShow() {
-      let $list = $("#global-uploader .file-list");
-      if ($list.is(":visible")) {
-        $list.slideUp();
-        this.collapse = true;
-      } else {
-        $list.slideDown();
-        this.collapse = false;
-      }
-    },
-    close() {
-      this.uploader.cancel();
-      this.panelShow = false;
-    },
-    error(msg) {
-      this.$notify({
-        title: this.$t("c.false"),
-        message: msg,
-        type: "error",
-        duration: 2000
-      });
-    }
+                let $list = $('#global-uploader .file-list');
+                if ($list.is(':visible')) {
+                    $list.slideUp();
+                    this.collapse = true;
+                } else {
+                    $list.slideDown();
+                    this.collapse = false;
+                }
+            },
   }
 };
 </script>
